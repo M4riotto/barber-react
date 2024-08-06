@@ -13,6 +13,11 @@ const Home = async () => {
 
   // chamar bdd
   const barbershops = await db.barbershop.findMany({})
+  const popularbarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    }
+  })
 
   return (
     <div>
@@ -28,6 +33,39 @@ const Home = async () => {
           <Button>
             <SearchIcon />
           </Button>
+        </div>
+
+        {/* busca rapida */}
+        <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+        <Button className="gap-2" variant="secondary">
+          <Image alt="Cabelo" src="./cabelo.svg" width={16} height={16}/>
+          Cabelo
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <Image alt="Barba" src="./Barba.svg" width={16} height={16}/>
+          Barba
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <Image alt="Acabamento" src="./acabamento.svg" width={16} height={16}/>
+          Acabamento
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <Image alt="sobrancelha" src="./sobrancelha.svg" width={16} height={16}/>
+          Sobrancelha
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <Image alt="massagem" src="./massagem.svg" width={16} height={16}/>
+          Massagem
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <Image alt="hidratacao" src="./hidratacao.svg" width={16} height={16}/>
+          Hidratação
+        </Button>
         </div>
 
         {/* BANNER  */}
@@ -74,8 +112,29 @@ const Home = async () => {
         </div>
 
 
+
+
+        <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">Populares</h2>
+
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularbarbershops.map(barbershop => <BarbershopItem key={barbershop.id} barbershop={barbershop} />)}
+        </div>
+
       </div>
+
+
+      <footer>
+        <Card className="px-5 pt-6">
+          <CardContent>
+            <p className="text-sm text-gray-400">
+              2023 Copyright <span className="font-bold">VGM Barber</span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
+
+
   )
 }
 

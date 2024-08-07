@@ -2,8 +2,7 @@ import { Button } from "./ui/button";
 import { CalendarIcon, HomeIcon, LogOutIcon, MenuIcon } from "lucide-react";
 import {  SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { quickSearchOptions } from "@/app/_constants/search";
-import { AvatarImage } from "@radix-ui/react-avatar";
-import { Avatar } from "./ui/avatar";
+import { Avatar, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
 

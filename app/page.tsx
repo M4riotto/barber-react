@@ -6,9 +6,10 @@ import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/ui/barbershop-items"
-import {quickSearchOptions} from "./_constants/search"
+import { quickSearchOptions } from "./_constants/search"
 import BookingItem from "./_components/ui/booking-item"
 import Search from "./_components/search"
+import Link from "next/link"
 
 
 
@@ -35,13 +36,15 @@ const Home = async () => {
         </div>
         {/* busca rapida */}
         <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-          {quickSearchOptions.map(option =>(
-            <Button className="gap-2" variant="secondary" key={option.title}>
-              <Image alt={option.title} src={option.imageUrl} width={16} height={16} />
-              {option.title}
+          {quickSearchOptions.map(option => (
+            <Button className="gap-2" variant="secondary" key={option.title} asChild>
+              <Link href={`/barbershops?service=${option.title}`}>
+                <Image alt={option.title} src={option.imageUrl} height={18} width={18} />
+                {option.title}
+              </Link>
             </Button>
           ))}
-        
+
         </div>
 
         {/* BANNER  */}
@@ -49,7 +52,7 @@ const Home = async () => {
           <Image alt="" src="/banner-01.png" fill className="object-cover rounded-xl" />
         </div>
 
-      <BookingItem  />
+        <BookingItem />
 
         <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">Recomendados</h2>
 

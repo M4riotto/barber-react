@@ -21,14 +21,14 @@ export default function RootLayout({
     <html lang="pt-BR" className="dark">
       <body className={inter.className}>
         <AuthProvider>
-          
-          {children}
-
-          <Toaster />
-
-          <Footer />
-
+          <div className="flex flex-col">
+            <div className="flex-1">
+              {children}
+            </div>
+            <Footer />
+          </div>
         </AuthProvider>
+        <Toaster />
 
       </body>
     </html>

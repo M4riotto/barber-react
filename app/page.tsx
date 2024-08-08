@@ -8,6 +8,7 @@ import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/ui/barbershop-items"
 import {quickSearchOptions} from "./_constants/search"
 import BookingItem from "./_components/ui/booking-item"
+import Search from "./_components/search"
 
 
 
@@ -29,13 +30,9 @@ const Home = async () => {
         <p>Segunda-Feira, 05 de Agosto</p>
 
         {/* BUSCA */}
-        <div className="flex items-center gap-2 mt-6">
-          <Input placeholder="Faça sua busca..." />
-          <Button>
-            <SearchIcon />
-          </Button>
+        <div className="mt-6">
+          <Search />
         </div>
-
         {/* busca rapida */}
         <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
           {quickSearchOptions.map(option =>(

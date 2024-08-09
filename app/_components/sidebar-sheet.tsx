@@ -15,7 +15,6 @@ const SidebarSheet = () => {
 
     const { data } = useSession()
 
-    const handleLoginWithGoogleClic = () => signIn("google")
     const handleLogoutClick = () => signOut()
 
 

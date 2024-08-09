@@ -1,5 +1,5 @@
 
-import { DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 
 import Image from "next/image";
 import { signIn } from "next-auth/react";

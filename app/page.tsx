@@ -10,10 +10,16 @@ import { quickSearchOptions } from "./_constants/search"
 import BookingItem from "./_components/ui/booking-item"
 import Search from "./_components/search"
 import Link from "next/link"
+import { getServerSession } from "next-auth"
+import { authOptions } from "./_lib/auth"
+import { format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 
 
 const Home = async () => {
+
+  const session = await getServerSession(authOptions)
 
   const barbershops = await db.barbershop.findMany({})
   const popularbarbershops = await db.barbershop.findMany({
@@ -22,13 +28,37 @@ const Home = async () => {
     }
   })
 
+  const confirmedBookings = session?.user ? await db.booking.findMany({
+    where: {
+      userId: (session.user as any).id,
+      date:{
+        gte: new Date()
+      }
+    },
+    include:{
+      service:{
+        include:{
+          barbershop: true
+        }
+      }
+    },
+    orderBy:{
+      date: "asc"
+    }
+  }) : []
+
   return (
     <div>
       {/* HEADER */}
       <Header />
       <div className="p-5">
-        <h2 className="text-xl font-bold">Olá, VítoR!</h2>
-        <p>Segunda-Feira, 05 de Agosto</p>
+        <h2 className="text-xl font-bold"> {session?.user?.name ? `Olá, ${session.user.name}` : "Logue com sua conta google"} </h2>
+
+        <div className="flex">
+        <p>{format(new Date(), 'EEEE', {locale: ptBR})}, &nbsp;</p>
+        <p>{format(new Date(), 'dd', {locale: ptBR})} de &nbsp; </p>
+        <p className="capitalize">{format(new Date(), 'MMMM', {locale: ptBR})}</p>
+        </div>
 
         {/* BUSCA */}
         <div className="mt-6">
@@ -52,7 +82,12 @@ const Home = async () => {
           <Image alt="" src="/banner-01.png" fill className="object-cover rounded-xl" />
         </div>
 
-        <BookingItem />
+        <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">Agendamentos</h2>
+
+
+        <div className="flex overflow-x-auto gap-3 [&::-webkit-scrollbar]:hidden" >
+          {confirmedBookings.map(booking => <BookingItem key={booking.id} booking={booking}/>)}
+        </div>
 
         <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">Recomendados</h2>
 

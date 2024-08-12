@@ -8,7 +8,7 @@ import { Avatar, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import {  signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import SignInDialog from "./sign-in-dialog";
 
 const SidebarSheet = () => {
@@ -65,9 +65,12 @@ const SidebarSheet = () => {
                         </Link>
                     </Button>
                 </SheetClose>
-                <Button className="gap-2 justify-start" variant="ghost">
-                    <CalendarIcon size={18} />
-                    Agendamentos</Button>
+                <Button className="gap-2 justify-start" variant="ghost" asChild>
+                    <Link href="/bookings">
+                        <CalendarIcon size={18} />
+                        Agendamentos
+                    </Link>
+                </Button>
             </div>
 
 
@@ -85,14 +88,14 @@ const SidebarSheet = () => {
             </div>
 
 
-          {data?.user && (
-              <div className="py-5 flex flex-col gap-2">
-              <Button variant="ghost" className="justify-start gap-2" onClick={handleLogoutClick}>
-                  <LogOutIcon size={18} />
-                  Sair da conta
-              </Button>
-          </div>
-          )}
+            {data?.user && (
+                <div className="py-5 flex flex-col gap-2">
+                    <Button variant="ghost" className="justify-start gap-2" onClick={handleLogoutClick}>
+                        <LogOutIcon size={18} />
+                        Sair da conta
+                    </Button>
+                </div>
+            )}
 
         </SheetContent>
     );

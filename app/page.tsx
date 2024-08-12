@@ -80,7 +80,7 @@ const Home = async () => {
           <Image alt="" src="/banner-01.png" fill className="object-cover rounded-xl" />
         </div>
 
-        <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">Agendamentos</h2>
+        <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">{session?.user ? 'Agendamentos' : ''}</h2>
 
 
         <div className="flex overflow-x-auto gap-3 [&::-webkit-scrollbar]:hidden" >

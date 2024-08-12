@@ -16,9 +16,11 @@ const createBoking = async (params: createBokingParams) => {
         throw new Error("Usuario não autenticado")
     }
     await db.booking.create({
-        data: {...params, userId: (user.user as any).id},
+        data: { ...params, userId: (user.user as any).id },
     }),
         revalidatePath('barbershops/[id]')
+        revalidatePath("/bookings")
+
 }
 
 export default createBoking;

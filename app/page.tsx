@@ -52,12 +52,10 @@ const Home = async () => {
       {/* HEADER */}
       <Header />
       <div className="p-5">
-        <h2 className="text-xl font-bold"> {session?.user?.name ? `Olá, ${session.user.name}` : "Logue com sua conta google"} </h2>
+        <h2 className="text-xl font-bold"> {session?.user?.name ? `Olá, ${session.user.name}` : "Olá, Bem vindo"} </h2>
 
         <div className="flex">
-        <p>{format(new Date(), 'EEEE', {locale: ptBR})}, &nbsp;</p>
-        <p>{format(new Date(), 'dd', {locale: ptBR})} de &nbsp; </p>
-        <p className="capitalize">{format(new Date(), 'MMMM', {locale: ptBR})}</p>
+          <p className="capitalize">{format(new Date(), "EEEE, dd 'de' MMMM", {locale: ptBR})}</p>
         </div>
 
         {/* BUSCA */}

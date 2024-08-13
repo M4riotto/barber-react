@@ -21,7 +21,7 @@ const SideBar = () => {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link
-                                    href="#"
+                                    href="/dashboard"
                                     className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                                     prefetch={false}
                                 >
@@ -34,7 +34,7 @@ const SideBar = () => {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link
-                                    href="#"
+                                    href="/dashboard/orders"
                                     className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                                     prefetch={false}
                                 >
@@ -47,7 +47,7 @@ const SideBar = () => {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link
-                                    href="#"
+                                    href="/dashboard/products"
                                     className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                                     prefetch={false}
                                 >
@@ -106,7 +106,7 @@ const SideBar = () => {
 
             <Sheet>
                 <SheetTrigger asChild>
-                     <Button size="icon" variant="outline" > 
+                    <Button size="icon" variant="outline" >
                         <MenuIcon className="h-5 w-5 sm:hidden" />
                         <ArrowRight className="h-5 w-5 hidden sm:block" />
                         <span className="sr-only">Toggle Menu</span>
@@ -122,12 +122,12 @@ const SideBar = () => {
                             <Package2Icon className="h-5 w-5 transition-all group-hover:scale-110" />
                             <span className="sr-only">Acme Inc</span>
                         </Link>
-                        <Link href="#" className="flex items-center gap-4 px-2.5 text-foreground" prefetch={false}>
+                        <Link href="/dashboard" className="flex items-center gap-4 px-2.5 text-foreground" prefetch={false}>
                             <LayoutGridIcon className="h-5 w-5" />
                             Dashboard
                         </Link>
                         <Link
-                            href="#"
+                            href="/dashboard/orders"
                             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                             prefetch={false}
                         >
@@ -135,7 +135,7 @@ const SideBar = () => {
                             Orders
                         </Link>
                         <Link
-                            href="#"
+                            href="/dashboard/products"
                             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                             prefetch={false}
                         >

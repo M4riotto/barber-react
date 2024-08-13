@@ -7,6 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/app/_components/ui/c
 import SideBar from "../_components/SideBar"
 import Client from "../_components/Client"
 import Orders from "../_components/orders"
+import Image from "next/image"
 
 export function Dashboard() {
     return (
@@ -26,7 +27,7 @@ export function Dashboard() {
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
-                                <img
+                                <Image
                                     src="/placeholder-user.jpg"
                                     width={36}
                                     height={36}

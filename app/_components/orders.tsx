@@ -31,7 +31,7 @@ const Orders = async () => {
                         <TableBody>
                             {filteredBookings.map(booking => (
 
-                                <TableRow className="">
+                                <TableRow className="bg-accent" key={booking.id}>
                                     <TableCell>
                                         <div className="font-medium">{booking.user.name}</div>
                                         <div className="hidden text-sm text-muted-foreground md:inline">{booking.user.email}</div>

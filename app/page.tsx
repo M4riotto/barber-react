@@ -31,18 +31,18 @@ const Home = async () => {
   const confirmedBookings = session?.user ? await db.booking.findMany({
     where: {
       userId: (session.user as any).id,
-      date:{
+      date: {
         gte: new Date()
       }
     },
-    include:{
-      service:{
-        include:{
+    include: {
+      service: {
+        include: {
           barbershop: true
         }
       }
     },
-    orderBy:{
+    orderBy: {
       date: "asc"
     }
   }) : []
@@ -55,7 +55,7 @@ const Home = async () => {
         <h2 className="text-xl font-bold"> {session?.user?.name ? `Olá, ${session.user.name}` : "Olá, Bem vindo"} </h2>
 
         <div className="flex">
-          <p className="capitalize">{format(new Date(), "EEEE, dd 'de' MMMM", {locale: ptBR})}</p>
+          <p className="capitalize">{format(new Date(), "EEEE, dd 'de' MMMM", { locale: ptBR })}</p>
         </div>
 
         {/* BUSCA */}
@@ -80,12 +80,18 @@ const Home = async () => {
           <Image alt="" src="/banner-01.png" fill className="object-cover rounded-xl" />
         </div>
 
-        <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">{session?.user ? 'Agendamentos' : ''}</h2>
+        {confirmedBookings.length > 0 && (
+          <>
+            <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">Agendamentos</h2>
+
+            <div className="flex overflow-x-auto gap-3 [&::-webkit-scrollbar]:hidden" >
+              {confirmedBookings.map(booking => <BookingItem key={booking.id} booking={booking} />)}
+            </div>
+          </>
+        )}
 
 
-        <div className="flex overflow-x-auto gap-3 [&::-webkit-scrollbar]:hidden" >
-          {confirmedBookings.map(booking => <BookingItem key={booking.id} booking={booking}/>)}
-        </div>
+
 
         <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-6">Recomendados</h2>
 

@@ -2,7 +2,7 @@ import { UsersIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import GetClient from "../_actions/get-client";
 
-const Client = async () => {
+const CountClient = async () => {
 
     const client = await GetClient()
     const count = client.length;
@@ -23,4 +23,4 @@ const Client = async () => {
     );
 }
 
-export default Client;
+export default CountClient;

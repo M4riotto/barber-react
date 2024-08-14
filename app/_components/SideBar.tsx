@@ -60,7 +60,7 @@ const SideBar = () => {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link
-                                    href="#"
+                                    href="/dashboard/clients"
                                     className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                                     prefetch={false}
                                 >
@@ -143,7 +143,7 @@ const SideBar = () => {
                             Products
                         </Link>
                         <Link
-                            href="#"
+                            href="/dashboard/clients"
                             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                             prefetch={false}
                         >

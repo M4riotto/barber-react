@@ -5,10 +5,10 @@ import { Input } from "@/app/_components/ui/input"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/app/_components/ui/dropdown-menu"
 import { Card, CardHeader, CardTitle, CardContent } from "@/app/_components/ui/card"
 import SideBar from "../_components/SideBar"
-import Client from "../_components/Client"
 import Orders from "../_components/orders"
 import Image from "next/image"
 import { ActivitySquareIcon, CreditCard, DollarSign } from "lucide-react"
+import CountClient from "../_components/Client"
 
 const Dashboard = () =>  {
     return (
@@ -60,7 +60,7 @@ const Dashboard = () =>  {
                                 <p className="text-xs text-muted-foreground">+20.1% from last month</p>
                             </CardContent>
                         </Card>
-                        <Client />
+                        <CountClient />
                         <Card>
                             <CardHeader className="flex flex-row items-center justify-between pb-2">
                                 <CardTitle className="text-sm font-medium">Sales</CardTitle>

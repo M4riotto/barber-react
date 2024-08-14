@@ -1,4 +1,4 @@
-import Orders from "@/app/_components/orders";
+import Client from "@/app/_components/customers";
 import SideBar from "@/app/_components/SideBar";
 import { Button } from "@/app/_components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/app/_components/ui/dropdown-menu";
@@ -6,7 +6,8 @@ import { Input } from "@/app/_components/ui/input";
 import Image from "next/image";
 
 
-const orders = () => {
+const Customers = async () => {
+
     return (
         <div className="flex min-h-screen w-full flex-col bg-muted/40">
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
@@ -45,7 +46,7 @@ const orders = () => {
                 </header>
                 <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-1">
-                        <Orders />
+                        <Client />
                     </div>
                 </main>
             </div>
@@ -53,4 +54,4 @@ const orders = () => {
     );
 }
 
-export default orders;
+export default Customers;

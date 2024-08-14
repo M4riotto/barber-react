@@ -1,4 +1,4 @@
-import { isFuture } from "date-fns";
+
 import getAllBookings from "../_actions/get-all-booking";
 import Teste from "./teste";
 
@@ -8,11 +8,6 @@ const Orders = async () => {
     const now = new Date(); // Data e hora atuais
     // Filtra reservas futuras
     const filteredBookings = bookings.filter(booking => new Date(booking.date) >= now);
-
-    const isConfirmed = filteredBookings.map(booking => ({
-        ...booking,
-        isConfirmed: isFuture(new Date(booking.date)),
-    }));
 
 
     return (

@@ -1,59 +1,38 @@
-import { format } from "date-fns";
+import { isFuture } from "date-fns";
 import getAllBookings from "../_actions/get-all-booking";
-import { Badge } from "./ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
-import { ptBR } from "date-fns/locale";
+import Teste from "./teste";
 
 const Orders = async () => {
     const bookings = await getAllBookings()
 
     const now = new Date(); // Data e hora atuais
-    const filteredBookings = bookings.filter(s => new Date(s.date) >= now);
+    // Filtra reservas futuras
+    const filteredBookings = bookings.filter(booking => new Date(booking.date) >= now);
+
+    const isConfirmed = filteredBookings.map(booking => ({
+        ...booking,
+        isConfirmed: isFuture(new Date(booking.date)),
+    }));
 
 
     return (
         <>
-            <Card>
-                <CardHeader className="px-7">
-                    <CardTitle>Orders</CardTitle>
-                    <CardDescription>Recent orders from your store.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Table >
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Customer</TableHead>
-                                <TableHead className="hidden sm:table-cell">Serviço</TableHead>
-                                <TableHead className="md:table-cell">Data</TableHead>
-                                <TableHead className="md:table-cell">Horário</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {filteredBookings.map(booking => (
+            <div>
 
-                                <TableRow className="bg-accent" key={booking.id}>
-                                    <TableCell>
-                                        <div className="font-medium">{booking.user.name}</div>
-                                        <div className="hidden text-sm text-muted-foreground md:inline">{booking.user.email}</div>
-                                    </TableCell>
-                                    <TableCell className="hidden sm:table-cell">{booking.service.name}</TableCell>
-                                    <TableCell className=" sm:table-cell">
-                                        <Badge className="text-xs" variant="secondary">
-                                            <p className="capitalize">{format(booking.date, "EEEE, dd 'de' MMMM", { locale: ptBR })}</p>
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell>
+                <div>
+                    <h2 className="text-bold">Orders</h2>
+                    <p className="text-sm">Recent orders from app</p>
+                </div>
 
-                                        <p>{format(booking.date, 'HH:mm', { locale: ptBR })}</p>
-                                    </TableCell>
-                                </TableRow>
+                <div className="space-y-2 sm:space-x-2 sm:grid-cols-2 grid grid-cols-1">
+                    {filteredBookings.map(booking => (
+                        <Teste key={booking.id} booking={booking} />
+                    ))}
 
-                            ))}
-                        </TableBody>
-                    </Table>
-                </CardContent>
-            </Card></>
+                </div>
+
+            </div>
+        </>
     );
 }
 

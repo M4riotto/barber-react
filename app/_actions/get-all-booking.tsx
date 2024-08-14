@@ -18,12 +18,15 @@ const getAllBookings = async () => {
             service: {
                 select: {
                     name: true, // Nome do serviço
+                    price: true,
+                    imageUrl: true
                 }
             },
             user: {
                 select: {
                     name: true,  // Nome do usuário
-                    email: true  // E-mail do usuário
+                    email: true,  // E-mail do usuário
+                    image: true
                 }
             }
         },

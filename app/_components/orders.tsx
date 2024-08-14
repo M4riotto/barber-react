@@ -26,6 +26,7 @@ const Orders = async () => {
                                 <TableHead>Customer</TableHead>
                                 <TableHead className="hidden sm:table-cell">Serviço</TableHead>
                                 <TableHead className="md:table-cell">Data</TableHead>
+                                <TableHead className="md:table-cell">Horário</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -39,8 +40,12 @@ const Orders = async () => {
                                     <TableCell className="hidden sm:table-cell">{booking.service.name}</TableCell>
                                     <TableCell className=" sm:table-cell">
                                         <Badge className="text-xs" variant="secondary">
-                                            {<p className="capitalize">{format(booking.date, "EEEE, dd 'de' MMMM", { locale: ptBR })}</p>}
+                                            <p className="capitalize">{format(booking.date, "EEEE, dd 'de' MMMM", { locale: ptBR })}</p>
                                         </Badge>
+                                    </TableCell>
+                                    <TableCell>
+
+                                        <p>{format(booking.date, 'HH:mm', { locale: ptBR })}</p>
                                     </TableCell>
                                 </TableRow>
 

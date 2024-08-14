@@ -55,9 +55,9 @@ const products = async () => {
                     </DropdownMenu>
                 </header>
                 <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1">
                         <h2 className="font-bold uppercase text-gray-400 text-xs ">Serviços</h2>
-                        <div className="space-y-3">
+                        <div className="md:grid-cols-2 grid grid-cols-1 gap-2">
                             {barbershop?.services.map(service => <ServiceItem key={service.id} barbershop={JSON.parse(JSON.stringify(barbershop))} service={JSON.parse(JSON.stringify(service))} />)}
                         </div>
                     </div>
